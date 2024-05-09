@@ -9,6 +9,8 @@ import {
 export type User = {
     id?: string;
     userName: string;
+    email: string;
+    displayName?: string;
 };
 
 export interface UserContextInterface {
@@ -19,6 +21,7 @@ export interface UserContextInterface {
 const defaultState: UserContextInterface = {
     user: {
         userName: "",
+        email: "",
     },
     setUser: () => {},
 };
@@ -30,7 +33,7 @@ type UserProviderProps = {
 };
 
 export function UserProvider({ children }: UserProviderProps) {
-    const [user, setUser] = useState<User>({ userName: "" });
+    const [user, setUser] = useState<User>({ userName: "", email: "" });
 
     return (
         <UserContext.Provider value={{ user, setUser }}>
